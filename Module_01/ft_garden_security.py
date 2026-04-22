@@ -63,7 +63,9 @@ def garden():
     plants[0].set_age(-42)
     print()
 
-    print(f"Current state: {plants[0]._name}: {float(plants[0]._height)}cm, {plants[0]._days} days old")
+    print(
+        f"Current state: {plants[0]._name}: "
+        f"{float(plants[0]._height)}cm, {plants[0]._days} days old")
 
 
 if __name__ == "__main__":
