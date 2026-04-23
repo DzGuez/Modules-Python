@@ -1,16 +1,19 @@
 #!/usr/bin/env python3
 
 class Plant:
-    def __init__(self, name, height, age):
+    """ Representa una planta con nombre, altura y edad """
+    def __init__(self, name: str, height: float, age: int) -> None:
         self.name = name
         self.height = height
         self.age = age
 
-    def show(self):
+    def show(self) -> None:
+        """ Muestra la informacion de la planta en pantalla """
         print(f"{self.name}: {self.height}cm, {self.age} days old. ")
 
 
-def garden():
+def garden() -> None:
+    """ Nueva funcion para crear nuevas plantas y mostrar su informacion"""
     print("=== Garden Plant Registry ===")
     rose = Plant("Rose", 25, 30)
     sunflower = Plant("Sunflower", 80, 45)

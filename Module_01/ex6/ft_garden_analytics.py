@@ -1,55 +1,82 @@
 #!/usr/bin/env python3
 
 class Plant:
-
+    """ Representa una planta con nombre, altura y edad 
+    Incluye una clase interna Stats que llevara un conteo de 
+    cuantas veces se llama a un metodo """
     class Stats:
-        def __init__(self):
-            self.grow_calls = 0
-            self.age_calls = 0
-            self.show_calls = 0
+        def __init__(self) -> None:
+            """ Inicializo todos los contadores a 0 """
+            self.grow_calls: int = 0
+            self.age_calls: int = 0
+            self.show_calls: int = 0
 
-        def display(self):
+        def display(self) -> None:
+            """ Imprime el valor actual de cada contador """
             print(f"Stats:  grow: {self.grow_calls}")
             print(f"Stats:  age: {self.age_calls}")
             print(f"Stats:  show: {self.show_calls}")
 
-    def __init__(self, name, height, days):
+    def __init__(self, name: str, height: float, days: int) -> None:
         self.name = name
         self.height = height
         self.days = days
         self.stats = Plant.Stats()
 
     @staticmethod
-    def is_older_than_a_year(days):
+    def is_older(days: int) -> bool:
+        """
+        Metodo static, porque no necesita ningun dato de la planta,
+            solo trabaja con el numero que recibe
+        Comprueba si una cantidad de dias supera un aNo, lo cual retorna
+        True si es mayor que 365 o False si es menor
+        """
         return days > 365
 
     @classmethod
-    def anonymous(cls):
+    def anonymous(cls) -> "Plant":
+        """
+        Metodo class, porque su trabajo es construir una instancia nueva
+            usando la propia clase como punto de partida sin depende de
+            una planta que ya exista
+        Crea una planta con valores por defecto sin necesidad de datos
+        Retorna una nueva instancia de Plant con los datos que menciono
+        """
         return cls("Unknown plant", 0.0, 0)
 
-    def grow(self, amount):
+    def grow(self, amount: float) -> None:
+        """ Incrementa la altura de la planta, registra la llamada"""
         self.height = round(self.height + amount, 1)
         self.stats.grow_calls += 1
 
-    def age(self):
+    def age(self) -> None:
+        """ Incrementa en 1 dia la edad y registra la llamada"""
         self.days = self.days + 1
         self.stats.age_calls += 1
 
-    def show(self):
+    def show(self) -> None:
+        """ Imprime el estado actual de la planta y registra la llamada""" 
         self.stats.show_calls += 1
         print(f"{self.name}: {self.height}cm, {self.days} days old")
 
 
 class Flower(Plant):
-    def __init__(self, name, height, days, color):
+    """ Planta con un nuevo atributo y un estado para florecer = False """
+    def __init__(self, name: str,
+                height: float,
+                days: int,
+                color: str
+                ) -> None:
         super().__init__(name, height, days)
-        self.color = color
-        self.bloomed = False
+        self.color: str = color
+        self.bloomed: bool = False
 
-    def bloom(self):
+    def bloom(self) -> None:
         self.bloomed = True
 
     def show(self):
+        """ Imprime el estado de la flor 
+        Incluyendo el color, el mensaje de si ya florecio segun corresponda"""
         super().show()
         print(f"Color: {self.color}")
         if self.bloomed:
@@ -59,7 +86,7 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-
+    """ Representa un arbol con atributos del padre, y diametro del tronco"""
     class Stats(Plant.Stats):
         def __init__(self):
             super().__init__()
@@ -127,8 +154,8 @@ def garden():
 
     # static method
     print("===== Check year old")
-    print(f"Is 30 days more than a year? ->{Plant.is_older_than_a_year(30)}")
-    print(f"Is 400 days more than a year? ->{Plant.is_older_than_a_year(400)}")
+    print(f"Is 30 days more than a year? -> {Plant.is_older(30)}")
+    print(f"Is 400 days more than a year? -> {Plant.is_older(400)}")
 
     # Flower
     print()
