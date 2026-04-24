@@ -2,11 +2,13 @@
 
 class Plant:
     """ Representa una planta con nombre, altura, edad y tasa crecimiento """
-    def __init__(self, name: str, 
-                height: float,
-                days: int,
-                growth_rate: float
-                ) -> None:
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days: int,
+            growth_rate: float
+            ) -> None:
         self.name = name
         self.height = height
         self.days = days

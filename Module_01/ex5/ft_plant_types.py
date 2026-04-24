@@ -22,11 +22,12 @@ class Plant:
 
 class Flower(Plant):
     """ Planta con un nuevo atributo y un estado para florecer = False """
-    def __init__(self, name: str,
-                height: float,
-                days: int,
-                color: str
-                ) -> None:
+    def __init__(
+            self, name: str,
+            height: float,
+            days: int,
+            color: str
+            ) -> None:
         super().__init__(name, height, days)
         self.color: str = color
         self.bloomed: bool = False
@@ -36,7 +37,7 @@ class Flower(Plant):
         self.bloomed = True
 
     def show(self) -> None:
-        """ Imprime el estado de la flor 
+        """ Imprime el estado de la flor
         Incluyendo el color, el mensaje de si ya florecio segun corresponda"""
         super().show()
         print(f"Color: {self.color}")
@@ -48,11 +49,12 @@ class Flower(Plant):
 
 class Tree(Plant):
     """ Representa un arbol con atributos del padre, y diametro del tronco"""
-    def __init__(self, name: str,
-                height: float,
-                days: int,
-                trunk_diameter: float
-                ) -> None:
+    def __init__(
+            self, name: str,
+            height: float,
+            days: int,
+            trunk_diameter: float
+            ) -> None:
         super().__init__(name, height, days)
         self.trunk_diameter: float = trunk_diameter
 
@@ -62,7 +64,7 @@ class Tree(Plant):
             f"Tree {self.name} now produces a shade of "
             f"{self.height}cm long and {self.trunk_diameter}cm wide.")
 
-    def show(self):
+    def show(self) -> None:
         """ Imprime el estado actual del arbol y el diametro del tronco"""
         super().show()
         print(f"Trunk diameter: {self.trunk_diameter}cm")
@@ -70,11 +72,13 @@ class Tree(Plant):
 
 class Vegetable(Plant):
     """ Representa vegetal con atributos del padre, y valor nutricional"""
-    def __init__(self, name: str,
-                height: float,
-                days: int,
-                harvest_season: str
-                ) -> None:
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days: int,
+            harvest_season: str
+            ) -> None:
         super().__init__(name, height, days)
         self.harvest_season: str = harvest_season
         self.nutritional_value: int = 0

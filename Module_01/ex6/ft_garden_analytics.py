@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 class Plant:
-    """ Representa una planta con nombre, altura y edad 
-    Incluye una clase interna Stats que llevara un conteo de 
+    """ Representa una planta con nombre, altura y edad
+    Incluye una clase interna Stats que llevara un conteo de
     cuantas veces se llama a un metodo """
     class Stats:
         def __init__(self) -> None:
@@ -55,18 +55,20 @@ class Plant:
         self.stats.age_calls += 1
 
     def show(self) -> None:
-        """ Imprime el estado actual de la planta y registra la llamada""" 
+        """ Imprime el estado actual de la planta y registra la llamada"""
         self.stats.show_calls += 1
         print(f"{self.name}: {self.height}cm, {self.days} days old")
 
 
 class Flower(Plant):
     """ Planta con un nuevo atributo y un estado para florecer = False """
-    def __init__(self, name: str,
-                height: float,
-                days: int,
-                color: str
-                ) -> None:
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days: int,
+            color: str
+            ) -> None:
         super().__init__(name, height, days)
         self.color: str = color
         self.bloomed: bool = False
@@ -75,7 +77,7 @@ class Flower(Plant):
         self.bloomed = True
 
     def show(self):
-        """ Imprime el estado de la flor 
+        """ Imprime el estado de la flor
         Incluyendo el color, el mensaje de si ya florecio segun corresponda"""
         super().show()
         print(f"Color: {self.color}")
@@ -88,68 +90,103 @@ class Flower(Plant):
 class Tree(Plant):
     """ Representa un arbol con atributos del padre, y diametro del tronco"""
     class Stats(Plant.Stats):
-        def __init__(self):
+        """ Extiendo el control de la clase nueva Plant.Stats agregando
+        el contador de llamadas con valor 0 para cuando se produce sombra """
+        def __init__(self) -> None:
             super().__init__()
             self.shade_calls = 0
 
-        def display(self):
+        def display(self) -> None:
+            """ Funcion para llamar todos los contadores o stats """
             print(f"Stats:  grow: {self.grow_calls}")
             print(f"Stats:  age: {self.age_calls}")
             print(f"Stats:  show: {self.show_calls}")
             print(f"Shade produced: {self.shade_calls}")
 
-    def __init__(self, name, height, days, trunk_diameter):
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days: int,
+            trunk_diameter: float):
         super().__init__(name, height, days)
         self.trunk_diameter = trunk_diameter
         self.stats = Tree.Stats()
 
-    def produce_shade(self):
+    def produce_shade(self) -> None:
+        """ Imprimir la sombra del arbol y registro la llamada
+        La sombra se calcula con la altura y el diametro del tronco """
         print(
             f"Tree {self.name} now produces a shade of "
             f"{self.height}cm long and {self.trunk_diameter}cm wide.")
         self.stats.shade_calls += 1
 
-    def show(self):
+    def show(self) -> None:
+        """ Imprime el estado del arbol del padre añadiendo el tronco """
         super().show()
         print(f"Trunk diameter: {self.trunk_diameter}cm")
 
 
 class Vegetable(Plant):
-    def __init__(self, name, height, days, harvest_season):
+    """ Representa vegetal con atributos del padre, y valor nutricional
+    Añado temporada de cosecha y el valor nutricional y su contador a 0"""
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days: int,
+            harvest_season: str
+            ) -> None:
         super().__init__(name, height, days)
-        self.harvest_season = harvest_season
-        self.nutritional_value = 0
+        self.harvest_season: str = harvest_season
+        self.nutritional_value: int = 0
 
-    def grow(self, amount):
+    def grow(self, amount: float) -> None:
+        """ Incrementa la altura del vegetal en (cantidad) dada"""
         super().grow(amount)
 
-    def age(self):
+    def age(self) -> None:
+        """ Incrementa la edad del vegetal y suma 1 al valor nutricional"""
         super().age()
         self.nutritional_value = self.nutritional_value + 1
 
-    def show(self):
+    def show(self) -> None:
+        """ Imprime el estado del vegetal"""
         super().show()
         print(f"Harvest season: {self.harvest_season}")
         print(f"Nutritional value: {self.nutritional_value}")
 
 
 class Seed(Flower):
-    def __init__(self, name, height, days, color, seed_count):
+    """Clase que hereda de flor con capacidad para producir semilla
+    Añade un contador de semillas"""
+    def __init__(
+            self,
+            name: str,
+            height: float,
+            days: int,
+            color: str,
+            seed_count: int
+            ) -> None:
         super().__init__(name, height, days, color)
         self.seed_count = seed_count
 
-    def show(self):
+    def show(self) -> None:
+        """Imprime el estado actual de la semilla, ademas del contador
+        de la semilla, lo pongo como condicion solo si florece muestre"""
         super().show()
         if self.bloomed:
             print(f"Seeds produced: {self.seed_count}")
 
 
-def display_stats(plant):
+def display_stats(plant) -> None:
+    """Muestra todos los stats de llamadas """
     print(f"[statistics for {plant.name}]")
     plant.stats.display()
 
 
-def garden():
+def garden() -> None:
+    """ Funcion principal que muestra todas las estadisticas del jardin"""
     print("=== Garden statistics ===")
 
     # static method

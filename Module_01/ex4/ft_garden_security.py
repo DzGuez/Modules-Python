@@ -31,7 +31,7 @@ class Plant:
         return self._days
 
     def set_height(self, height: float) -> None:
-        """ 
+        """
         Actualiza e imprime la altura de la planta si el valor es valido.
         Redondea a 1 decimal
         """
