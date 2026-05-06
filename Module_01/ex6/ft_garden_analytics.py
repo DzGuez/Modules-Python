@@ -4,7 +4,7 @@ class Plant:
     """ Representa una planta con nombre, altura y edad
     Incluye una clase interna Stats que llevara un conteo de
     cuantas veces se llama a un metodo """
-    class Stats:
+    class _Stats:
         def __init__(self) -> None:
             """ Inicializo todos los contadores a 0 """
             self.grow_calls: int = 0
@@ -21,7 +21,7 @@ class Plant:
         self.name = name
         self.height = height
         self.days = days
-        self.stats = Plant.Stats()
+        self.stats: Plant._Stats = Plant._Stats()
 
     @staticmethod
     def is_older(days: int) -> bool:
@@ -89,18 +89,16 @@ class Flower(Plant):
 
 class Tree(Plant):
     """ Representa un arbol con atributos del padre, y diametro del tronco"""
-    class Stats(Plant.Stats):
+    class _Stats(Plant._Stats):
         """ Extiendo el control de la clase nueva Plant.Stats agregando
         el contador de llamadas con valor 0 para cuando se produce sombra """
         def __init__(self) -> None:
             super().__init__()
             self.shade_calls = 0
 
-        def display(self) -> None:
+        def display(self: "Tree._Stats") -> None:
             """ Funcion para llamar todos los contadores o stats """
-            print(f"Stats:  grow: {self.grow_calls}")
-            print(f"Stats:  age: {self.age_calls}")
-            print(f"Stats:  show: {self.show_calls}")
+            super().display()
             print(f"Shade produced: {self.shade_calls}")
 
     def __init__(
@@ -108,10 +106,11 @@ class Tree(Plant):
             name: str,
             height: float,
             days: int,
-            trunk_diameter: float):
+            trunk_diameter: float
+            ) -> None:
         super().__init__(name, height, days)
         self.trunk_diameter = trunk_diameter
-        self.stats = Tree.Stats()
+        self.stats: Tree._Stats = Tree._Stats()
 
     def produce_shade(self) -> None:
         """ Imprimir la sombra del arbol y registro la llamada
@@ -195,8 +194,7 @@ def garden() -> None:
     print(f"Is 400 days more than a year? -> {Plant.is_older(400)}")
 
     # Flower
-    print()
-    print("===== Flower")
+    print("\n===== Flower")
     rose = Flower("Rose", 15.0, 10, "red")
     rose.show()
     display_stats(rose)
@@ -207,8 +205,7 @@ def garden() -> None:
     display_stats(rose)
 
     # Tree
-    print()
-    print("===== Tree")
+    print("\n===== Tree")
     oak = Tree("Oak", 200.0, 365, 5.0)
     oak.show()
     display_stats(oak)
@@ -217,8 +214,7 @@ def garden() -> None:
     display_stats(oak)
 
     # Seed
-    print()
-    print("===== Seed")
+    print("\n===== Seed")
     sunflower = Seed("Sunflower", 80.0, 45, "yellow", 0)
     sunflower.show()
     print("[make sunflower grow, age and bloom]")
@@ -231,8 +227,7 @@ def garden() -> None:
     display_stats(sunflower)
 
     # Anonymous
-    print()
-    print("===== Anonymous")
+    print("\n===== Anonymous")
     aloe = Plant.anonymous()
     aloe.show()
     display_stats(aloe)
