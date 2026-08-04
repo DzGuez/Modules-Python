@@ -24,11 +24,11 @@ def test_temperature() -> None:
         print(f"\nInput data is '{value}'")
         try:
             """ Intento convertir el dato, si falla va al except """
-            """ Lo guardo en una variable para que sea mas facil manejar el dato"""
+            """ Lo guardo en una variable para manejar mas facil los datos"""
             temperature = input_temperature(value)
             print(f"Temperature is now {temperature}°C")
         except ValueError as e:
-            """Como se que sera un error en el valor lo encapsulo con ValueError """
+            """Como se que sera un error en valor lo encapsulo en ValueError"""
             print(f"Caught input_temperature error: {e}")
 
     print("\nAll tests completed - program didn't crash! ")

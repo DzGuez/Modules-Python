@@ -5,13 +5,14 @@ def garden_operations(operation_number: int) -> None:
     if operation_number == 0:
         int("abc")
     elif operation_number == 1:
-        result = 1 / 0
+        1 / 0   # type: ignore
     elif operation_number == 2:
-        file = open("/Campus42/Modules_python/error_archivo")
+        open("/Campus42/Modules_python/error_archivo")
     elif operation_number == 3:
-        result = "42Barcelona" + 42
+        "42Barcelona" + 42  # type: ignore
     else:
         return
+
 
 def test_error_types() -> None:
     """Realiza cada prueba a cada tipo de error de la funcion anterior"""
@@ -24,11 +25,13 @@ def test_error_types() -> None:
             garden_operations(operation_number)
             # Si no hay excepcion, la operacion fue exitosa
             print("Operation completed successfully")
-        except (ValueError, ZeroDivisionError, FileNotFoundError, TypeError) as e:
+        except (
+            ValueError, ZeroDivisionError, FileNotFoundError, TypeError
+        ) as e:
             # Realizo un except con todos los errores para no repetir codigo
             print(f"Caught {e.__class__.__name__}: {e}")
-    
     print("\nAll error types tested successfully!")
+
 
 if __name__ == "__main__":
     test_error_types()
