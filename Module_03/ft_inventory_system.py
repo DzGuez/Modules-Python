@@ -2,9 +2,11 @@
 
 import sys
 
+
 def parse_inventory(argumentos: list[str]) -> dict[str, int]:
     """ Convierte los argumentos crudos en un diccionario valido """
-    """ Cada argumento debe tener el formato valido, para evitar mensajes de error """
+    """ Cada argumento debe tener el formato valido, para evitar
+    que salgan mensajes de error """
     inventario: dict[str, int] = {}
 
     for parametro in argumentos:
@@ -55,7 +57,7 @@ def find_extremes(inventario: dict[str, int]) -> tuple[str, int, str, int]:
     return mas_abundante, valor_mas, menos_abundante, valor_menos
 
 
-def main () -> None:
+def main() -> None:
     """Ejecuta el programa del sistema del inventario"""
     print("=== Inventory System Analysis ===")
 
@@ -88,4 +90,3 @@ def main () -> None:
 
 if __name__ == "__main__":
     main()
-

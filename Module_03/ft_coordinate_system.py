@@ -4,7 +4,6 @@
 Sistema de coordenadas 3D. Permite ingresar a posiciones como tuplas (x, y, z)
 Y calcular distancias entre puntos"""
 
-import sys
 import math
 
 
@@ -50,7 +49,6 @@ def main() -> None:
             )
     print(f"Distance to center: {round(distancia_centro, 4)}")
 
-
     print("\nGet a second set of coordinates")
     second = get_player_pos()
 
@@ -64,4 +62,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

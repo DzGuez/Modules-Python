@@ -5,11 +5,12 @@ Programa para limpiar datos que ponen jugadores en consola"""
 
 import sys
 
-def main():
+
+def main() -> None:
     """ Procesa sys.argv y muestra todo el analisis de puntajes"""
 
     print("=== Player Score Analytics === ")
-    
+
     scores = []
     for parameter in sys.argv[1:]:
         try:
@@ -38,5 +39,4 @@ def main():
 
 
 if __name__ == "__main__":
-     main()
-
+    main()

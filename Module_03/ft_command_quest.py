@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-""" ft_command_quest. py 
+""" ft_command_quest. py
 Programa para explorar sys.argv """
 
 import sys
+
 
 def main() -> None:
     """Mostrar los parametros por linea de comandos"""
@@ -24,4 +25,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
