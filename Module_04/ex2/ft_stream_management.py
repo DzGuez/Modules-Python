@@ -38,11 +38,7 @@ def mostrar_fragmentos(nombre_archivo: str, lineas: list[str]) -> None:
 
 def transformar_lineas(lineas: list[str]) -> list[str]:
     """ Agrega un # al final de cada linea """
-    nuevas_lineas: list[str] = []
-    for linea in lineas:
-        contenido: str = linea.rstrip("\n")
-        nuevas_lineas.append(f"{contenido}#\n")
-    return nuevas_lineas
+    return [linea.rstrip("\n") + "#\n" for linea in lineas]
 
 
 def mostrar_fragmentos_cambiados(lineas: list[str]) -> None:
