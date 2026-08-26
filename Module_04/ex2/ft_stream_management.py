@@ -18,7 +18,7 @@ def leer_archivo(nombre_archivo: str) -> list[str] | None:
     except OSError as error:
         escribir_error(f"Error opening file '{nombre_archivo}': {error}")
         return None
-    
+
     lineas: list[str] = archivo.readlines()
     archivo.close()
     return lineas
