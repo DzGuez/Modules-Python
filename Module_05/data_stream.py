@@ -123,4 +123,11 @@ class DataStream:
                 )
 
     def print_processor_stats(self) -> None:
-        
+
+
+def main() -> None:
+    ...
+
+
+if __name__ == "__main__":
+    main()
