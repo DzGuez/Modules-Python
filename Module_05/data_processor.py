@@ -103,7 +103,7 @@ class LogProcessor(DataProcessor):
 def main() -> None:
     print("=== Code Nexus - Data Processor ===")
 
-    print("Testing Numeric Processor...")
+    print("\nTesting Numeric Processor...")
     numeric = NumericProcessor()
 
     print(f" Trying to validate input '42: {numeric.validate(42)}")
@@ -124,8 +124,7 @@ def main() -> None:
         rango, valor = numeric.output()
         print(f" Numeric value {rango}: {valor}")
 
-    print()
-    print("Testing Text Processor...")
+    print("\nTesting Text Processor...")
     text = TextProcessor()
 
     print(f" Trying to validate input '42': {text.validate(42)}")
@@ -138,8 +137,7 @@ def main() -> None:
     rango, valor = text.output()
     print(f" Text value {rango}: {valor}")
 
-    print()
-    print("Testing Log Processor...")
+    print("\nTesting Log Processor...")
     log = LogProcessor()
 
     print(f" Trying to validate input 'Hello': {log.validate('Hello')}")
