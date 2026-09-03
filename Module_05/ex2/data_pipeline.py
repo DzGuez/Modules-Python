@@ -137,7 +137,7 @@ class DataStream:
     def print_processor_stats(self) -> None:
         print("\n== DataStream statistics ==")
         if not self._procesadores:
-            print("Not processor found, no data")
+            print("No processor found, no data")
             return
 
         for procesador in self._procesadores:
@@ -153,8 +153,11 @@ class DataStream:
         for procesador in self._procesadores:
             resultados: list[tuple[int, str]] = []
             for _ in range(nb):
-                resultados.append(procesador.output())
-                plugin.process_output(resultados)
+                try:
+                    resultados.append(procesador.output())
+                except IndexError:
+                    break
+            plugin.process_output(resultados)
 
 
 class CSVPlugin():
