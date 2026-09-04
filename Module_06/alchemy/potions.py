@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+from elements import create_fire, create_water
+from .elements import create_earth, create_air
+
+
+def healing_potion() -> str:
+    """ Funcion para crear pocion curativa."""
+    return (
+        f"Healing potion brewed with "
+        f"'{create_earth()}' and '{create_air()}'"
+    )
+
+
+def strength_potion() -> str:
+    """ Funcion para crear pocion de fuerza"""
+    return (
+        f"Strength potion brewed with "
+        f"'{create_fire()}' and '{create_water()}'"
+    )
