@@ -5,7 +5,7 @@ from .creature import Creature, Flameling, Pyrodon, Aquabub, Torragon
 
 
 class CreatureFactory(ABC):
-    """Fabrica abstracta que define el contrato para crear Creat, base y evol"""
+    """Fabrica abstracta que define el contrato para crear Creat base y evol"""
 
     @abstractmethod
     def create_base(self) -> Creature:
