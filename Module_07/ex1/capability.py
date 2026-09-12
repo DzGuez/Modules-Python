@@ -5,6 +5,7 @@ from abc import ABC, abstractmethod
 
 class HealCapability(ABC):
     """ Capacidad abstracta independiente de creature, define curacion"""
+
     @abstractmethod
     def heal(self) -> str:
         """ Cura a la creatura y retorna un mensaje que lo describe"""
@@ -22,7 +23,7 @@ class TransformCapability(ABC):
     def transform(self) -> str:
         """ Activa el estado transformado de la creatura"""
         ...
-    
+
     @abstractmethod
     def revert(self) -> str:
         """ Desactiva el estado transformado de la creatura"""
