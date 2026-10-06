@@ -35,8 +35,8 @@ def check_all() -> bool:
 
 def run_analysis() -> Any:
     """ Genera datos simulados con numpy y los analiza con pandas"""
-    import numpy as np
-    import pandas as pd
+    import numpy as np  # type: ignore
+    import pandas as pd  # type: ignore
 
     print("\nAnalyzing Matrix data...")
     rng = np.random.default_rng(42)
@@ -50,7 +50,7 @@ def create_visualization(table: Any) -> None:
     """ Dibuja los datos con matplotlib y guarda la imagen"""
     # import matplotlib
     # matplotlib.use("Agg")
-    import matplotlib.pyplot as plt
+    import matplotlib.pyplot as plt  # type: ignore
 
     print("Generating visualization...")
     plt.figure(figsize=(8, 4))
